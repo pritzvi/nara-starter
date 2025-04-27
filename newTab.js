@@ -977,4 +977,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
     tasksContainer.classList.remove("hidden");
   }
+
+  // Inspirational quotes for the overlay (in-depth, from historic people)
+  const INSPIRATIONAL_QUOTES = [
+    "The only way to do great work is to love what you do. – Steve Jobs",
+    "Success is not final, failure is not fatal: It is the courage to continue that counts. – Winston Churchill",
+    "You must be the change you wish to see in the world. – Mahatma Gandhi",
+    "What lies behind us and what lies before us are tiny matters compared to what lies within us. – Ralph Waldo Emerson",
+    "The best way to predict the future is to invent it. – Alan Kay",
+    "Happiness is not something ready made. It comes from your own actions. – Dalai Lama",
+    "It always seems impossible until it's done. – Nelson Mandela",
+    "In the middle of every difficulty lies opportunity. – Albert Einstein",
+    "The only limit to our realization of tomorrow will be our doubts of today. – Franklin D. Roosevelt",
+    "Act as if what you do makes a difference. It does. – William James"
+  ];
+
+  function showInspirationalQuote() {
+    const quoteDiv = document.getElementById("inspirational-quote");
+    if (!quoteDiv) return;
+    const randomQuote = INSPIRATIONAL_QUOTES[Math.floor(Math.random() * INSPIRATIONAL_QUOTES.length)];
+    quoteDiv.textContent = randomQuote;
+  }
+
+  showInspirationalQuote();
 });
