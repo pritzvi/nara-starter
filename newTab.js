@@ -619,6 +619,31 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Encouragement messages for the speech bubble
+  const ENCOURAGEMENT_MESSAGES = [
+    "Great job!",
+    "You're making progress!",
+    "Keep going!",
+    "Awesome work!",
+    "You did it!",
+    "Way to go!",
+    "Proud of you!",
+    "Keep up the good work!",
+    "Fantastic!",
+    "You're on a roll!"
+  ];
+
+  function showSpeechBubble(message) {
+    const bubble = document.getElementById("speech-bubble");
+    if (!bubble) return;
+    bubble.textContent = message;
+    bubble.classList.add("visible");
+    // Remove after 2 seconds
+    setTimeout(() => {
+      bubble.classList.remove("visible");
+    }, 2000);
+  }
+
   function renderTasks(tasks, backgroundIndex, category) {
     const tasksHeader =
       document.getElementById("tasks-header") || document.createElement("div");
@@ -673,6 +698,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (tasks[originalIndex].completed) {
           const deleteButton = taskItem.querySelector(".delete-task");
           if (deleteButton) deleteButton.remove();
+          // Show encouragement speech bubble
+          const randomMsg = ENCOURAGEMENT_MESSAGES[Math.floor(Math.random() * ENCOURAGEMENT_MESSAGES.length)];
+          showSpeechBubble(randomMsg);
         }
 
         let newPosition = 0;
